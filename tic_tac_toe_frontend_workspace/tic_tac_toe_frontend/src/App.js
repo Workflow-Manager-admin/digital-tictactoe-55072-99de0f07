@@ -8,9 +8,19 @@ const COLORS = {
   accent: "#ffca28",
 };
 
-const API_BASE =
-  process.env.REACT_APP_TTT_API ||
-  "http://localhost:3001"; // Update if backend runs elsewhere
+/**
+ * Determine backend API base URL.
+ * Safely access environment variable to avoid "Process is not defined" error in browser.
+ */
+// PUBLIC_INTERFACE
+function getApiBase() {
+  // Check if process and process.env exist, otherwise fallback.
+  if (typeof process !== "undefined" && process.env && process.env.REACT_APP_TTT_API) {
+    return process.env.REACT_APP_TTT_API;
+  }
+  return "http://localhost:3001";
+}
+const API_BASE = getApiBase(); // computed and cached at module load
 
 // Board cell rendering helper (stateless)
 function Square({ value, onClick, highlighted }) {
