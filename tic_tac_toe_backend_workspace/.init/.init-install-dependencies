@@ -1,0 +1,4 @@
+{
+    "command": "source venv/bin/activate && pip install -r requirements.txt",
+    "working_directory": "/home/kavia/workspace/code-generation/digital-tictactoe-55072-99de0f07/tic_tac_toe_backend_workspace/tic_tac_toe_backend"
+}
